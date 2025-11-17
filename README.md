@@ -64,4 +64,4 @@ Admin rolündeki kullanıcıların JWT ile giriş yaptığı, CRUD (Create, Read
 ![Admin Araç İşlemleri](Carbook-SS/Araç_İşlemleri.png)
 
 **Admin Paneli - Araç Kiralama Ekranı**
-![Admin Araç Kiralama](Carbook-SS/AraçKiralama.png)
+![Admin Araç Kiralama](Carbook-SS/AraçKirala.png)
