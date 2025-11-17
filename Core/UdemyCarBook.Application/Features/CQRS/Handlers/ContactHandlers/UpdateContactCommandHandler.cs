@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UdemyCarBook.Application.Features.CQRS.Command.ContactCommands;
+using UdemyCarBook.Application.Interfaces;
+using UdemyCarBook.Domain.Entities;
+
+namespace UdemyCarBook.Application.Features.CQRS.Handlers.ContactHandlers
+{
+    public class UpdateContactCommandHandler
+    {
+        private readonly IRepository<Contact> _repository;
+
+        public UpdateContactCommandHandler(IRepository<Contact> repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task Handle(UpdateContactCommand command)
+        {
+            var contact = await _repository.GetByIdAsync(command.ContactID);
+            if (contact != null)
+            {
+                contact.Name = command.Name;
+                contact.Email = command.Email;
+                contact.Message = command.Message;
+                contact.SendDate = command.SendDate;
+                contact.Subject = command.Subject;
+                await _repository.Update(contact);
+            }
+        }
+    }
+}
